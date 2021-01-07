@@ -28,7 +28,7 @@ input bookInput{
     link: String
 }
 type Auth {
-    token: ID
+    token: ID!
     user: User
 }
 type Query{
