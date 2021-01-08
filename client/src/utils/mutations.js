@@ -1,33 +1,29 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 export const LOGIN_USER = gql`
-mutation login($email: String!, $password: String!){
-    login(email: $email, password: $password){
-        token
-        user{
-            _id
-            username
-            email
-            bookCount
-            savedBooks {
-              bookId
-              title
-              description
-              authors
-              image
-              link
-
-            }
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      user {
+        _id
+        email
+        bookCount
+        savedBooks {
+          bookId
+          authors
+          description
+          title
+          image
+          link
         }
+      }
     }
-    
-}
-
+  }
 `;
 
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(username: $username, email: $email, password: $password) {
+  mutation addUser($username: String!, $password: String!, $email: String!) {
+    addUser(username: $username, password: $password, email: $email) {
       token
       user {
         _id
@@ -36,12 +32,11 @@ export const ADD_USER = gql`
         bookCount
         savedBooks {
           bookId
-          title
-          description
           authors
+          description
+          title
           image
           link
-
         }
       }
     }
@@ -49,44 +44,39 @@ export const ADD_USER = gql`
 `;
 
 export const SAVE_BOOK = gql`
-mutation saveBook($input: bookInput!){
+  mutation saveBook($input: savedBook!) {
     saveBook(input: $input) {
-        _id
-        username
-        email
-        bookCount
-        savedBooks {
-          bookId
-          title
-          description
-          authors
-          image
-          link
-
-        }
-
+      _id
+      username
+      email
+      bookCount
+      savedBooks {
+        bookId
+        authors
+        description
+        title
+        image
+        link
+      }
     }
-}
-
+  }
 `;
 
 export const REMOVE_BOOK = gql`
-mutation removeBook($bookId: String!){
-  removeBook(bookId: $bookId){
-    _id
-    username
-    email
-    bookCount
-    savedBooks{
-      bookId
-      title
-      description
-      authors
-      image
-      link
-
+  mutation removeBook($bookId: String!) {
+    removeBook(bookId: $bookId) {
+      _id
+      username
+      email
+      bookCount
+      savedBooks {
+        bookId
+        authors
+        description
+        title
+        image
+        link
+      }
     }
-
   }
-}
 `;

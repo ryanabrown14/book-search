@@ -13,7 +13,8 @@ const SavedBooks = () => {
   const{loading, data } = useQuery(GET_ME);
   const [removeBook] = useMutation(REMOVE_BOOK);
   const userData = data?.me || {};
-
+console.log(userData);
+console.log(data);
   // use this to determine if `useEffect()` hook needs to run again
 
 
@@ -41,7 +42,7 @@ const SavedBooks = () => {
   if (loading) {
     return <h2>LOADING...</h2>;
   }
-
+  
   return (
     <>
       <Jumbotron fluid className='text-light bg-dark'>
